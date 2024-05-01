@@ -44,16 +44,12 @@ namespace Common
         {
             string columnName = string.Empty;
             //获取指定类型的自定义特性
-            object[] attrs = property.GetCustomAttributes(false);
-            foreach (var attr in attrs)
+            ColumnAttribute[] attrs = (ColumnAttribute[])property.GetCustomAttributes(typeof(ColumnAttribute), false);
+            if (attrs != null && attrs.Length > 0)
             {
-                if(attr is ColumnAttribute)
-                {
-                    ColumnAttribute colAttr = attr as ColumnAttribute;
-                    columnName = colAttr.ColumnName;
-                }
+                columnName = attrs[0].ColumnName;
             }
-            if(string.IsNullOrEmpty(columnName))
+            else if(string.IsNullOrEmpty(columnName))
             {
                 columnName = property.Name;
             }
