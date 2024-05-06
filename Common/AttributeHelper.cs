@@ -83,14 +83,10 @@ namespace Common
         /// <returns></returns>  
         public static string GetPrimary(this Type type)
         {
-            object[] attributes = type.GetCustomAttributes(false);
-            foreach (var attr in attributes)
+            PrimaryKeyAttribute[] attributes = (PrimaryKeyAttribute[])type.GetCustomAttributes(typeof(PrimaryKeyAttribute), false);
+            if (attributes != null && attributes.Length > 0)
             {
-                if (attr is PrimaryKeyAttribute)
-                {
-                    PrimaryKeyAttribute primaryKeyAttr = attr as PrimaryKeyAttribute;
-                    return primaryKeyAttr.PrimaryKey;
-                }
+                return attributes[0].PrimaryKey;
             }
             return null;
         }
