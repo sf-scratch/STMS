@@ -110,7 +110,6 @@ namespace STMS.DAL
                 public static string CreateSelectSql<T>(string strWhere, string cols)
                 {
                         Type type = typeof(T);
-                        PropertyInfo[] properties = PropertyHelper.GetTypeProperties<T>(cols);
                         if (string.IsNullOrEmpty(cols))
                                 cols = "*";
                         if (string.IsNullOrEmpty(strWhere)) strWhere = "1=1";

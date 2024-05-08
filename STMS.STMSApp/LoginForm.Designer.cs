@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             uPanel1 = new UControls.UPanel();
-            uCircleButton1 = new UControls.UCircleButton();
+            btnLogin = new UControls.UCircleButton();
             uPanel3 = new UControls.UPanel();
-            textBox2 = new TextBox();
+            txtUPwd = new TextBox();
             label3 = new Label();
             uPanel2 = new UControls.UPanel();
-            textBox1 = new TextBox();
+            txtUName = new TextBox();
             label2 = new Label();
             label1 = new Label();
             uPanel1.SuspendLayout();
@@ -52,7 +52,7 @@
             uPanel1.BgColor2 = Color.Transparent;
             uPanel1.BorderColor = Color.Black;
             uPanel1.BorderStyle = BorderStyle.FixedSingle;
-            uPanel1.Controls.Add(uCircleButton1);
+            uPanel1.Controls.Add(btnLogin);
             uPanel1.Controls.Add(uPanel3);
             uPanel1.Controls.Add(uPanel2);
             uPanel1.Controls.Add(label1);
@@ -63,20 +63,21 @@
             uPanel1.Size = new Size(777, 311);
             uPanel1.TabIndex = 0;
             // 
-            // uCircleButton1
+            // btnLogin
             // 
-            uCircleButton1.BackColor = Color.Transparent;
-            uCircleButton1.BgColor = Color.MediumTurquoise;
-            uCircleButton1.BgColor2 = Color.Blue;
-            uCircleButton1.ForeColor = SystemColors.ButtonFace;
-            uCircleButton1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            uCircleButton1.Location = new Point(164, 231);
-            uCircleButton1.Name = "uCircleButton1";
-            uCircleButton1.Radius = 5;
-            uCircleButton1.Size = new Size(449, 42);
-            uCircleButton1.TabIndex = 3;
-            uCircleButton1.Text = "登录";
-            uCircleButton1.UseVisualStyleBackColor = false;
+            btnLogin.BackColor = Color.Transparent;
+            btnLogin.BgColor = Color.MediumTurquoise;
+            btnLogin.BgColor2 = Color.Blue;
+            btnLogin.ForeColor = SystemColors.ButtonFace;
+            btnLogin.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            btnLogin.Location = new Point(164, 231);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Radius = 5;
+            btnLogin.Size = new Size(449, 42);
+            btnLogin.TabIndex = 3;
+            btnLogin.Text = "登录";
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // uPanel3
             // 
@@ -85,7 +86,7 @@
             uPanel3.BgColor2 = Color.Transparent;
             uPanel3.BorderColor = SystemColors.ButtonFace;
             uPanel3.BorderWidth = 2;
-            uPanel3.Controls.Add(textBox2);
+            uPanel3.Controls.Add(txtUPwd);
             uPanel3.Controls.Add(label3);
             uPanel3.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             uPanel3.Location = new Point(164, 161);
@@ -94,14 +95,16 @@
             uPanel3.Size = new Size(449, 61);
             uPanel3.TabIndex = 2;
             // 
-            // textBox2
+            // txtUPwd
             // 
-            textBox2.BackColor = Color.FromArgb(0, 33, 106);
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(72, 17);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(353, 30);
-            textBox2.TabIndex = 3;
+            txtUPwd.BackColor = Color.FromArgb(0, 33, 106);
+            txtUPwd.BorderStyle = BorderStyle.FixedSingle;
+            txtUPwd.ForeColor = SystemColors.ButtonFace;
+            txtUPwd.Location = new Point(72, 17);
+            txtUPwd.Name = "txtUPwd";
+            txtUPwd.PasswordChar = '*';
+            txtUPwd.Size = new Size(353, 30);
+            txtUPwd.TabIndex = 3;
             // 
             // label3
             // 
@@ -120,7 +123,7 @@
             uPanel2.BgColor2 = Color.Transparent;
             uPanel2.BorderColor = SystemColors.ButtonFace;
             uPanel2.BorderWidth = 2;
-            uPanel2.Controls.Add(textBox1);
+            uPanel2.Controls.Add(txtUName);
             uPanel2.Controls.Add(label2);
             uPanel2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             uPanel2.Location = new Point(164, 94);
@@ -129,14 +132,15 @@
             uPanel2.Size = new Size(449, 61);
             uPanel2.TabIndex = 1;
             // 
-            // textBox1
+            // txtUName
             // 
-            textBox1.BackColor = Color.FromArgb(0, 33, 106);
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(72, 17);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(353, 30);
-            textBox1.TabIndex = 1;
+            txtUName.BackColor = Color.FromArgb(0, 33, 106);
+            txtUName.BorderStyle = BorderStyle.FixedSingle;
+            txtUName.ForeColor = SystemColors.ButtonFace;
+            txtUName.Location = new Point(72, 17);
+            txtUName.Name = "txtUName";
+            txtUName.Size = new Size(353, 30);
+            txtUName.TabIndex = 1;
             // 
             // label2
             // 
@@ -170,6 +174,8 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LoginForm";
             Text = "仓库温度监控系统登录界面";
+            FormClosing += LoginForm_FormClosing;
+            Load += LoginForm_Load;
             uPanel1.ResumeLayout(false);
             uPanel1.PerformLayout();
             uPanel3.ResumeLayout(false);
@@ -185,10 +191,10 @@
         private Label label1;
         private UControls.UPanel uPanel3;
         private UControls.UPanel uPanel2;
-        private UControls.UCircleButton uCircleButton1;
+        private UControls.UCircleButton btnLogin;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox txtUPwd;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox txtUName;
     }
 }
