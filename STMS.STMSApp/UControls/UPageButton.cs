@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace STMS.STMSApp.UControls
 {
+    [DefaultEvent("Click")]
     public partial class UPageButton : UserControl
     {
         public UPageButton()
@@ -23,15 +24,15 @@ namespace STMS.STMSApp.UControls
             set { lbText.Text = value; }
         }
 
-        protected override void OnClick(EventArgs e)
+        public Color BtnTextColor
         {
-            base.OnClick(e);
-            lbText.ForeColor = Color.FromArgb(45, 50, 116);
+            get { return lbText.ForeColor; }
+            set { lbText.ForeColor = value; }
         }
 
         private void lbText_Click(object sender, EventArgs e)
         {
-            this.OnClick(e);
+            this.InvokeOnClick(this, e);
         }
     }
 }

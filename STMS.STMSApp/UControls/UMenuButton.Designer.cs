@@ -41,6 +41,7 @@
             pbImage.Size = new Size(50, 50);
             pbImage.TabIndex = 0;
             pbImage.TabStop = false;
+            pbImage.Click += pbImage_Click;
             pbImage.MouseDown += pbImage_MouseDown;
             pbImage.MouseEnter += pbImage_MouseEnter;
             pbImage.MouseLeave += pbImage_MouseLeave;
@@ -56,6 +57,7 @@
             lbBtnText.Size = new Size(137, 40);
             lbBtnText.TabIndex = 1;
             lbBtnText.Text = "仓库管理";
+            lbBtnText.Click += lbBtnText_Click;
             lbBtnText.MouseDown += lbBtnText_MouseDown;
             lbBtnText.MouseEnter += lbBtnText_MouseEnter;
             lbBtnText.MouseLeave += lbBtnText_MouseLeave;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STMS.STMSApp.UControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,7 @@ namespace STMS.STMSApp
         }
 
         System.Timers.Timer timer = null;
+        int seletPageCode = 0;
 
         private Point mPoint;//定义一个位置信息Point用于存储鼠标位置
 
@@ -79,24 +81,20 @@ namespace STMS.STMSApp
             }
         }
 
-        private void btnStorePage_Click(object sender, EventArgs e)
-        {
-            MsgBoxHelper.MsgBoxShow("点击", "lll");
-        }
-
         private void FormMain_Load(object sender, EventArgs e)
         {
             if (this.Tag != null)
             {
                 InitStatusInfo();//状态栏初始化
                 ShowStoreManage();//显示仓库管理页面
-                btnStorePage.Visible = true;
+                btnStoreManagePage.Visible = true;
             }
         }
 
         private void ShowStoreManage()
         {
-
+            SetPageButtonsColor(0);
+            panelPage.AddPanelForm(typeof(Store.FormStoreList));
         }
 
         private void InitStatusInfo()
@@ -118,6 +116,92 @@ namespace STMS.STMSApp
             {
                 this.lbLoginTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             }));
+        }
+
+        private void btnStoreManage_Click(object sender, EventArgs e)
+        {
+            ShowStoreManage();
+        }
+
+        private void btnProductManage_Click(object sender, EventArgs e)
+        {
+            SetPageButtonsColor(2);
+            panelPage.AddPanelForm(typeof(Store.FormProductList));
+        }
+
+        private void btnStoreTemperatureManage_Click(object sender, EventArgs e)
+        {
+            SetPageButtonsColor(4);
+            panelPage.AddPanelForm(typeof(Store.FormStoreRegionTemperatureList));
+        }
+
+        private void SetPageButtonsColor(int pageCode)
+        {
+            seletPageCode = pageCode;
+            switch (seletPageCode)
+            {
+                case 0:
+                    SetPageButtonsColor(btnStoreManagePage);
+                    break;
+                case 1:
+                    SetPageButtonsColor(btnStoreRegionPage);
+                    break;
+                case 2:
+                    SetPageButtonsColor(btnProductManagePage);
+                    break;
+                case 3:
+                    SetPageButtonsColor(btnProductInputPage);
+                    break;
+                case 4:
+                    SetPageButtonsColor(btnStoreTemperaturePage);
+                    break;
+            }
+        }
+
+        private void SetPageButtonsColor(UPageButton pageButton)
+        {
+            //分页按钮文本颜色
+            Color topSelColor = Color.FromArgb(45, 50, 116);//点击时或显示相关页面时
+            Color topUnSelColor = Color.White;//默认或没有显示页面时
+            pageButton.BtnTextColor = topSelColor;
+            UPageButton[] pageButtons = { btnStoreManagePage, btnStoreRegionPage, btnProductManagePage, btnProductInputPage, btnStoreTemperaturePage };
+            foreach (UPageButton button in pageButtons)
+            {
+                if (button.Name != pageButton.Name)
+                {
+                    button.BtnTextColor = topUnSelColor;
+                }
+            }
+        }
+
+        private void btnStoreManagePage_Click(object sender, EventArgs e)
+        {
+            SetPageButtonsColor(0);
+            panelPage.AddPanelForm(typeof(Store.FormStoreList));
+        }
+
+        private void btnStoreRegionPage_Click(object sender, EventArgs e)
+        {
+            SetPageButtonsColor(1);
+            panelPage.AddPanelForm(typeof(Store.FormStoreRegionList));
+        }
+
+        private void btnProductManagePage_Click(object sender, EventArgs e)
+        {
+            SetPageButtonsColor(2);
+            panelPage.AddPanelForm(typeof(Store.FormProductList));
+        }
+
+        private void btnProductInputPage_Click(object sender, EventArgs e)
+        {
+            SetPageButtonsColor(3);
+            panelPage.AddPanelForm(typeof(Store.FormProductInStore));
+        }
+
+        private void btnStoreTemperaturePage_Click(object sender, EventArgs e)
+        {
+            SetPageButtonsColor(4);
+            panelPage.AddPanelForm(typeof(Store.FormStoreRegionTemperatureList));
         }
     }
 }

@@ -81,7 +81,7 @@ namespace STMS.STMSApp.UControls
 
         private void pbImage_MouseLeave(object sender, EventArgs e)
         {
-            OnMouseLeave(e) ;
+            OnMouseLeave(e);
         }
 
         private void pbImage_MouseDown(object sender, MouseEventArgs e)
@@ -92,6 +92,16 @@ namespace STMS.STMSApp.UControls
         private void pbImage_MouseUp(object sender, MouseEventArgs e)
         {
             OnMouseUp(e);
+        }
+
+        private void pbImage_Click(object sender, EventArgs e)
+        {
+            this.InvokeOnClick(this, e);
+        }
+
+        private void lbBtnText_Click(object sender, EventArgs e)
+        {
+            this.InvokeOnClick(this, e);
         }
     }
 }

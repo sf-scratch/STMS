@@ -34,9 +34,9 @@
             btnMax = new UControls.UIconButton();
             btnMin = new UControls.UIconButton();
             uPanel1 = new UControls.UPanel();
-            uMenuButton3 = new UControls.UMenuButton();
-            uMenuButton2 = new UControls.UMenuButton();
-            uMenuButton1 = new UControls.UMenuButton();
+            btnStoreTemperatureManage = new UControls.UMenuButton();
+            btnProductManage = new UControls.UMenuButton();
+            btnStoreManage = new UControls.UMenuButton();
             uPanel5 = new UControls.UPanel();
             uPanel6 = new UControls.UPanel();
             uPanel7 = new UControls.UPanel();
@@ -58,11 +58,11 @@
             uPanel16 = new UControls.UPanel();
             panel2 = new Panel();
             button1 = new Button();
-            uPageButton4 = new UControls.UPageButton();
-            uPageButton3 = new UControls.UPageButton();
-            uPageButton1 = new UControls.UPageButton();
-            uPageButton2 = new UControls.UPageButton();
-            btnStorePage = new UControls.UPageButton();
+            btnStoreTemperaturePage = new UControls.UPageButton();
+            btnProductInputPage = new UControls.UPageButton();
+            btnProductManagePage = new UControls.UPageButton();
+            btnStoreRegionPage = new UControls.UPageButton();
+            btnStoreManagePage = new UControls.UPageButton();
             panelPage = new Panel();
             panel1.SuspendLayout();
             uPanel1.SuspendLayout();
@@ -145,9 +145,9 @@
             uPanel1.BackColor = Color.Transparent;
             uPanel1.BgColor = Color.FromArgb(45, 50, 116);
             uPanel1.BgColor2 = Color.Transparent;
-            uPanel1.Controls.Add(uMenuButton3);
-            uPanel1.Controls.Add(uMenuButton2);
-            uPanel1.Controls.Add(uMenuButton1);
+            uPanel1.Controls.Add(btnStoreTemperatureManage);
+            uPanel1.Controls.Add(btnProductManage);
+            uPanel1.Controls.Add(btnStoreManage);
             uPanel1.Controls.Add(uPanel5);
             uPanel1.Controls.Add(uPanel3);
             uPanel1.Controls.Add(uPanel2);
@@ -158,35 +158,38 @@
             uPanel1.Size = new Size(264, 716);
             uPanel1.TabIndex = 1;
             // 
-            // uMenuButton3
+            // btnStoreTemperatureManage
             // 
-            uMenuButton3.BackColor = Color.FromArgb(45, 50, 116);
-            uMenuButton3.BtnImage = Resources._04;
-            uMenuButton3.BtnText = "仓库温控管理";
-            uMenuButton3.Location = new Point(3, 129);
-            uMenuButton3.Name = "uMenuButton3";
-            uMenuButton3.Size = new Size(258, 54);
-            uMenuButton3.TabIndex = 6;
+            btnStoreTemperatureManage.BackColor = Color.FromArgb(45, 50, 116);
+            btnStoreTemperatureManage.BtnImage = Resources._04;
+            btnStoreTemperatureManage.BtnText = "仓库温控管理";
+            btnStoreTemperatureManage.Location = new Point(3, 129);
+            btnStoreTemperatureManage.Name = "btnStoreTemperatureManage";
+            btnStoreTemperatureManage.Size = new Size(258, 54);
+            btnStoreTemperatureManage.TabIndex = 6;
+            btnStoreTemperatureManage.Click += btnStoreTemperatureManage_Click;
             // 
-            // uMenuButton2
+            // btnProductManage
             // 
-            uMenuButton2.BackColor = Color.FromArgb(45, 50, 116);
-            uMenuButton2.BtnImage = Resources._03;
-            uMenuButton2.BtnText = "产品管理";
-            uMenuButton2.Location = new Point(3, 69);
-            uMenuButton2.Name = "uMenuButton2";
-            uMenuButton2.Size = new Size(258, 54);
-            uMenuButton2.TabIndex = 5;
+            btnProductManage.BackColor = Color.FromArgb(45, 50, 116);
+            btnProductManage.BtnImage = Resources._03;
+            btnProductManage.BtnText = "产品管理";
+            btnProductManage.Location = new Point(3, 69);
+            btnProductManage.Name = "btnProductManage";
+            btnProductManage.Size = new Size(258, 54);
+            btnProductManage.TabIndex = 5;
+            btnProductManage.Click += btnProductManage_Click;
             // 
-            // uMenuButton1
+            // btnStoreManage
             // 
-            uMenuButton1.BackColor = Color.FromArgb(45, 50, 116);
-            uMenuButton1.BtnImage = (Image)resources.GetObject("uMenuButton1.BtnImage");
-            uMenuButton1.BtnText = "仓库管理";
-            uMenuButton1.Location = new Point(3, 4);
-            uMenuButton1.Name = "uMenuButton1";
-            uMenuButton1.Size = new Size(258, 54);
-            uMenuButton1.TabIndex = 0;
+            btnStoreManage.BackColor = Color.FromArgb(45, 50, 116);
+            btnStoreManage.BtnImage = (Image)resources.GetObject("btnStoreManage.BtnImage");
+            btnStoreManage.BtnText = "仓库管理";
+            btnStoreManage.Location = new Point(3, 4);
+            btnStoreManage.Name = "btnStoreManage";
+            btnStoreManage.Size = new Size(258, 54);
+            btnStoreManage.TabIndex = 0;
+            btnStoreManage.Click += btnStoreManage_Click;
             // 
             // uPanel5
             // 
@@ -431,11 +434,11 @@
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = Color.FromArgb(39, 44, 102);
             panel2.Controls.Add(button1);
-            panel2.Controls.Add(uPageButton4);
-            panel2.Controls.Add(uPageButton3);
-            panel2.Controls.Add(uPageButton1);
-            panel2.Controls.Add(uPageButton2);
-            panel2.Controls.Add(btnStorePage);
+            panel2.Controls.Add(btnStoreTemperaturePage);
+            panel2.Controls.Add(btnProductInputPage);
+            panel2.Controls.Add(btnProductManagePage);
+            panel2.Controls.Add(btnStoreRegionPage);
+            panel2.Controls.Add(btnStoreManagePage);
             panel2.Location = new Point(282, 95);
             panel2.Name = "panel2";
             panel2.Size = new Size(1106, 40);
@@ -452,66 +455,76 @@
             button1.Text = "X";
             button1.UseVisualStyleBackColor = false;
             // 
-            // uPageButton4
+            // btnStoreTemperaturePage
             // 
-            uPageButton4.BackColor = Color.Transparent;
-            uPageButton4.BackgroundImage = Resources.btnbg05;
-            uPageButton4.BackgroundImageLayout = ImageLayout.Stretch;
-            uPageButton4.BtnText = "仓库温控页面";
-            uPageButton4.Location = new Point(822, 3);
-            uPageButton4.Margin = new Padding(0);
-            uPageButton4.Name = "uPageButton4";
-            uPageButton4.Size = new Size(174, 35);
-            uPageButton4.TabIndex = 4;
+            btnStoreTemperaturePage.BackColor = Color.Transparent;
+            btnStoreTemperaturePage.BackgroundImage = Resources.btnbg05;
+            btnStoreTemperaturePage.BackgroundImageLayout = ImageLayout.Stretch;
+            btnStoreTemperaturePage.BtnText = "仓库温控页面";
+            btnStoreTemperaturePage.BtnTextColor = SystemColors.ButtonFace;
+            btnStoreTemperaturePage.Location = new Point(822, 3);
+            btnStoreTemperaturePage.Margin = new Padding(0);
+            btnStoreTemperaturePage.Name = "btnStoreTemperaturePage";
+            btnStoreTemperaturePage.Size = new Size(174, 35);
+            btnStoreTemperaturePage.TabIndex = 4;
+            btnStoreTemperaturePage.Click += btnStoreTemperaturePage_Click;
             // 
-            // uPageButton3
+            // btnProductInputPage
             // 
-            uPageButton3.BackColor = Color.Transparent;
-            uPageButton3.BackgroundImage = Resources.btnbg04;
-            uPageButton3.BackgroundImageLayout = ImageLayout.Stretch;
-            uPageButton3.BtnText = "产品入库页面";
-            uPageButton3.Location = new Point(618, 3);
-            uPageButton3.Margin = new Padding(0);
-            uPageButton3.Name = "uPageButton3";
-            uPageButton3.Size = new Size(174, 35);
-            uPageButton3.TabIndex = 3;
+            btnProductInputPage.BackColor = Color.Transparent;
+            btnProductInputPage.BackgroundImage = Resources.btnbg04;
+            btnProductInputPage.BackgroundImageLayout = ImageLayout.Stretch;
+            btnProductInputPage.BtnText = "产品入库页面";
+            btnProductInputPage.BtnTextColor = SystemColors.ButtonFace;
+            btnProductInputPage.Location = new Point(618, 3);
+            btnProductInputPage.Margin = new Padding(0);
+            btnProductInputPage.Name = "btnProductInputPage";
+            btnProductInputPage.Size = new Size(174, 35);
+            btnProductInputPage.TabIndex = 3;
+            btnProductInputPage.Click += btnProductInputPage_Click;
             // 
-            // uPageButton1
+            // btnProductManagePage
             // 
-            uPageButton1.BackColor = Color.Transparent;
-            uPageButton1.BackgroundImage = Resources.btnbg03;
-            uPageButton1.BackgroundImageLayout = ImageLayout.Stretch;
-            uPageButton1.BtnText = "产品管理页面";
-            uPageButton1.Location = new Point(413, 3);
-            uPageButton1.Margin = new Padding(0);
-            uPageButton1.Name = "uPageButton1";
-            uPageButton1.Size = new Size(174, 35);
-            uPageButton1.TabIndex = 2;
+            btnProductManagePage.BackColor = Color.Transparent;
+            btnProductManagePage.BackgroundImage = Resources.btnbg03;
+            btnProductManagePage.BackgroundImageLayout = ImageLayout.Stretch;
+            btnProductManagePage.BtnText = "产品管理页面";
+            btnProductManagePage.BtnTextColor = SystemColors.ButtonFace;
+            btnProductManagePage.Location = new Point(413, 3);
+            btnProductManagePage.Margin = new Padding(0);
+            btnProductManagePage.Name = "btnProductManagePage";
+            btnProductManagePage.Size = new Size(174, 35);
+            btnProductManagePage.TabIndex = 2;
+            btnProductManagePage.Click += btnProductManagePage_Click;
             // 
-            // uPageButton2
+            // btnStoreRegionPage
             // 
-            uPageButton2.BackColor = Color.Transparent;
-            uPageButton2.BackgroundImage = Resources.btnbg02;
-            uPageButton2.BackgroundImageLayout = ImageLayout.Stretch;
-            uPageButton2.BtnText = "仓库分区页面";
-            uPageButton2.Location = new Point(213, 3);
-            uPageButton2.Margin = new Padding(0);
-            uPageButton2.Name = "uPageButton2";
-            uPageButton2.Size = new Size(174, 35);
-            uPageButton2.TabIndex = 1;
+            btnStoreRegionPage.BackColor = Color.Transparent;
+            btnStoreRegionPage.BackgroundImage = Resources.btnbg02;
+            btnStoreRegionPage.BackgroundImageLayout = ImageLayout.Stretch;
+            btnStoreRegionPage.BtnText = "仓库分区页面";
+            btnStoreRegionPage.BtnTextColor = SystemColors.ButtonFace;
+            btnStoreRegionPage.Location = new Point(213, 3);
+            btnStoreRegionPage.Margin = new Padding(0);
+            btnStoreRegionPage.Name = "btnStoreRegionPage";
+            btnStoreRegionPage.Size = new Size(174, 35);
+            btnStoreRegionPage.TabIndex = 1;
+            btnStoreRegionPage.Click += btnStoreRegionPage_Click;
             // 
-            // btnStorePage
+            // btnStoreManagePage
             // 
-            btnStorePage.BackColor = Color.Transparent;
-            btnStorePage.BackgroundImage = (Image)resources.GetObject("btnStorePage.BackgroundImage");
-            btnStorePage.BackgroundImageLayout = ImageLayout.Stretch;
-            btnStorePage.BtnText = "仓库管理页面";
-            btnStorePage.Location = new Point(12, 3);
-            btnStorePage.Margin = new Padding(0);
-            btnStorePage.Name = "btnStorePage";
-            btnStorePage.Size = new Size(174, 35);
-            btnStorePage.TabIndex = 0;
-            btnStorePage.Click += btnStorePage_Click;
+            btnStoreManagePage.BackColor = Color.Transparent;
+            btnStoreManagePage.BackgroundImage = (Image)resources.GetObject("btnStoreManagePage.BackgroundImage");
+            btnStoreManagePage.BackgroundImageLayout = ImageLayout.Stretch;
+            btnStoreManagePage.BtnText = "仓库管理页面";
+            btnStoreManagePage.BtnTextColor = SystemColors.ButtonFace;
+            btnStoreManagePage.ForeColor = SystemColors.ActiveCaptionText;
+            btnStoreManagePage.Location = new Point(12, 3);
+            btnStoreManagePage.Margin = new Padding(0);
+            btnStoreManagePage.Name = "btnStoreManagePage";
+            btnStoreManagePage.Size = new Size(174, 35);
+            btnStoreManagePage.TabIndex = 0;
+            btnStoreManagePage.Click += btnStoreManagePage_Click;
             // 
             // panelPage
             // 
@@ -576,19 +589,19 @@
         private Label label1;
         private Panel panel2;
         private Panel panelPage;
-        private UControls.UMenuButton uMenuButton2;
-        private UControls.UMenuButton uMenuButton1;
+        private UControls.UMenuButton btnProductManage;
+        private UControls.UMenuButton btnStoreManage;
         private UControls.UIconButton btnClose;
         private UControls.UIconButton btnMax;
         private UControls.UIconButton btnMin;
         private Label lbLoginTime;
         private Label lbUsername;
-        private UControls.UPageButton btnStorePage;
-        private UControls.UPageButton uPageButton2;
-        private UControls.UPageButton uPageButton4;
-        private UControls.UPageButton uPageButton3;
-        private UControls.UPageButton uPageButton1;
-        private UControls.UMenuButton uMenuButton3;
+        private UControls.UPageButton btnStoreManagePage;
+        private UControls.UPageButton btnStoreRegionPage;
+        private UControls.UPageButton btnStoreTemperaturePage;
+        private UControls.UPageButton btnProductInputPage;
+        private UControls.UPageButton btnProductManagePage;
+        private UControls.UMenuButton btnStoreTemperatureManage;
         private Button button1;
     }
 }
